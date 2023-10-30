@@ -1,0 +1,18 @@
+h1 {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+h3 {
+    font-weight: bold;
+    font-style: italic;
+    display: inline;
+}
+
+.inline {
+    display: inline;
+}
+
+.verse {
+    font-style: italic;
+}
