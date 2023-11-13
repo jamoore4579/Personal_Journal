@@ -1,5 +1,28 @@
 {
   "dependencies": {
+    "express": "^4.18.2",
+    "mysql": "^2.18.1",
     "package-name": "^0.1.0"
-  }
+  },
+  "name": "Personal_Journal",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "coffee-script": "^1.3.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamoore4579/Personal_Journal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamoore4579/Personal_Journal/issues"
+  },
+  "homepage": "https://github.com/jamoore4579/Personal_Journal#readme"
 }

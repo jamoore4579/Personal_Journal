@@ -2,58 +2,42 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     var createPostLink = document.getElementById('create-post-link');
+    var newPostBox = document.querySelector('.new-post-box');
+    var journalContainer = document.body; // Assuming you want to append new posts to the body
 
-    if (createPostLink) {
+    if (createPostLink && newPostBox && journalContainer) {
         createPostLink.addEventListener('click', function(e) {
             e.preventDefault();
 
-            // Create a new section element for the new post box
-            var newSection = document.createElement('section');
-            var postId = 'post-' + new Date().getTime(); // Generate a unique ID for the new post
-            newSection.id = postId;
-            newSection.classList.add('new-post-box'); // Add the new class
-
-            // Create input elements for post title and content
-            var titleInput = document.createElement('input');
-            titleInput.setAttribute('type', 'text');
-            titleInput.setAttribute('placeholder', 'Enter Post Title');
-
-            var contentInput = document.createElement('textarea');
-            contentInput.setAttribute('placeholder', 'Enter Post Content');
-
-            // Create a Submit button
-            var submitButton = document.createElement('button');
-            submitButton.textContent = 'Submit';
-
-            // Add an event listener to the Submit button to create the post
-            submitButton.addEventListener('click', function() {
-                // Create a new h3 element with the user-entered title
-                var newH3 = document.createElement('h3');
-                newH3.textContent = titleInput.value;
-
-                // Create a new p element with the user-entered content
-                var newP = document.createElement('p');
-                newP.textContent = contentInput.value;
-
-                // Append the new elements to the new section
-                newSection.appendChild(newH3);
-                newSection.appendChild(newP);
-
-                // Append the new section to the body
-                document.body.appendChild(newSection);
-
-                // Clear input fields
-                titleInput.value = '';
-                contentInput.value = '';
-            });
-
-            // Append input elements and Submit button to the new post box
-            newSection.appendChild(titleInput);
-            newSection.appendChild(contentInput);
-            newSection.appendChild(submitButton);
-
-            // Append the new post box to the body
-            document.body.appendChild(newSection);
+            // Toggle the visibility of the new post box
+            newPostBox.style.display = newPostBox.style.display === 'none' || newPostBox.style.display === '' ? 'block' : 'none';
         });
+
+        // Add an event listener to the Submit button inside the new post box
+        var submitButton = document.getElementById('submit-post');
+        if (submitButton) {
+            submitButton.addEventListener('click', function() {
+                // Get the user-entered title and content
+                var title = document.getElementById('post-title').value;
+                var content = document.getElementById('post-content').value;
+
+                // Perform any additional logic or submit the data to the server here
+                console.log('Title:', title);
+                console.log('Content:', content);
+
+                // Create a new section element for the submitted post
+                var newSection = document.createElement('section');
+                newSection.innerHTML = `
+                    <h3>${title}</h3>
+                    <p class="inline">${content}</p>
+                `;
+
+                // Append the new post section to the journal container
+                journalContainer.appendChild(newSection);
+
+                // Optionally, hide the new post box after submission
+                newPostBox.style.display = 'none';
+            });
+        }
     }
 });
